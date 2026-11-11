@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Humberto Barreto | Desenvolvedor Full Stack em formação</title>
+<meta name="description" content="Portfólio de Humberto Barreto, estudante de Tecnologia em Sistemas para Internet no IFSul e desenvolvedor Full Stack em formação. Projetos, tecnologias e contato.">
+<meta name="theme-color" content="#060915">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Humberto Barreto | Desenvolvedor Full Stack em formação">
+<meta property="og:description" content="Portfólio de Humberto Barreto, estudante de Tecnologia em Sistemas para Internet no IFSul e desenvolvedor Full Stack em formação. Projetos, tecnologias e contato.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232B63E6'/%3E%3Cstop offset='1' stop-color='%237340E0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' text-anchor='middle' fill='white'%3EHB%3C/text%3E%3C/svg%3E">
+<style>
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Layout: one dark page. Slim sticky nav, hero with intro + editor card, about with a ledger,
+   stack grouped by layer, two project features that alternate sides, contact card for NFC visitors. */
+:root {
+  color-scheme: dark;
+  --bg: #060915;
+  --bg-2: #0A1022;
+  --surface: #0C1226;
+  --line: rgba(128, 148, 255, .14);
+  --line-2: rgba(128, 148, 255, .3);
+  --fg: #E9EDFB;
+  --fg-dim: #A6AFCB;
+  --fg-mute: #7C86A8;
+  --blue: #3B82FF;
+  --blue-soft: #82AAFF;
+  --violet: #8B5CF6;
+  --violet-soft: #B9A2FF;
+  --ok: #34D399;
+  --grad: linear-gradient(105deg, #3B82FF 0%, #8B5CF6 100%);
+  --grad-btn: linear-gradient(105deg, #2B63E6 0%, #7340E0 100%);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-body: "Geist", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 16px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue-soft); outline-offset: 3px; border-radius: 8px; }
+svg { display: block; }
+
+/* ambient background */
+.bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bg__glow { position: absolute; border-radius: 50%; }
+.bg__glow--a { width: 70vmax; height: 70vmax; right: -28vmax; top: -34vmax; background: radial-gradient(closest-side, rgba(59, 130, 255, .2), transparent 70%); }
+.bg__glow--b { width: 60vmax; height: 60vmax; left: -30vmax; top: 24vmax; background: radial-gradient(closest-side, rgba(139, 92, 246, .14), transparent 70%); }
+.bg__grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 0%, transparent 75%);
+  opacity: .55;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* nav */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: rgba(6, 9, 21, .72);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__in { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 60px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--f-display); font-weight: 700; letter-spacing: -.01em; flex: none; }
+.brand__mark { width: 32px; height: 32px; border-radius: 10px; background: var(--grad-btn); display: grid; place-items: center; font-size: .8rem; font-weight: 800; color: #fff; }
+.brand__name { display: none; }
+@media (min-width: 560px) { .brand__name { display: inline; } }
+.nav__links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.nav__links::-webkit-scrollbar { display: none; }
+.nav__links a { padding: 8px 12px; border-radius: 10px; font-size: .9rem; color: var(--fg-dim); text-decoration: none; transition: color .2s, background .2s; white-space: nowrap; }
+.nav__links a:hover { color: var(--fg); background: rgba(128, 148, 255, .08); }
+.nav__links a[aria-current="true"] { color: var(--fg); background: rgba(128, 148, 255, .16); }
+
+/* type */
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 .74rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--blue-soft); }
+.eyebrow::before { content: ""; width: 22px; height: 2px; border-radius: 2px; background: var(--grad); }
+h1, h2, h3, h4 { margin: 0; }
+h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.05; letter-spacing: -.03em; text-wrap: balance; }
+.sec { padding-block: clamp(56px, 9vw, 104px); }
+.sec__head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 20px; border-radius: 12px; font: 600 .95rem/1 var(--f-body); text-decoration: none; border: 1px solid transparent; cursor: pointer; color: var(--fg); transition: transform .25s var(--ease), box-shadow .25s, border-color .25s, background .25s; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn--primary { background: var(--grad-btn); color: #fff; box-shadow: 0 8px 28px -10px rgba(91, 110, 255, .7); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(115, 100, 255, .85); }
+.btn--ghost { background: rgba(12, 18, 38, .6); border-color: var(--line-2); }
+.btn--ghost:hover { border-color: var(--blue-soft); transform: translateY(-2px); }
+.chip-link { display: inline-flex; align-items: center; gap: 9px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 12px; color: var(--fg-dim); text-decoration: none; font-size: .9rem; transition: color .2s, border-color .2s, background .2s, transform .25s var(--ease); }
+.chip-link svg { width: 18px; height: 18px; }
+.chip-link:hover { color: var(--fg); border-color: var(--line-2); background: rgba(128, 148, 255, .07); transform: translateY(-2px); }
+
+/* hero */
+.hero { padding-block: clamp(36px, 7vw, 84px) clamp(48px, 8vw, 96px); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; }
+@media (min-width: 960px) { .hero__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: 56px; } }
+.pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 12px; border: 1px solid var(--line-2); border-radius: 999px; background: rgba(12, 18, 38, .7); font-size: .85rem; color: var(--fg-dim); }
+.pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(52, 211, 153, .55); animation: pulse 2.2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(52, 211, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.8rem, 9.5vw, 5.6rem); line-height: .98; letter-spacing: -.035em; margin-top: 22px; }
+h1 span { display: block; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; padding-bottom: .06em; }
+.role { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.15rem, 2.8vw, 1.6rem); letter-spacing: -.01em; color: var(--fg-dim); margin: 14px 0 0; }
+.lede { max-width: 56ch; color: var(--fg-dim); font-size: 1.05rem; margin: 22px 0 0; }
+.meta { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--fg-mute); font-size: .92rem; }
+.meta svg { width: 18px; height: 18px; color: var(--blue-soft); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.cv-note { margin: 16px 0 0; padding: 12px 14px; border: 1px dashed var(--line-2); border-radius: 12px; color: var(--fg-dim); font-size: .92rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; max-width: 56ch; }
+.mono { font-family: var(--f-mono); color: var(--fg); overflow-wrap: anywhere; }
+.mini-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line-2); background: transparent; color: var(--fg-dim); font: 500 .8rem/1 var(--f-body); cursor: pointer; transition: border-color .2s, color .2s; }
+.mini-btn svg { width: 14px; height: 14px; }
+.mini-btn:hover { border-color: var(--blue-soft); color: var(--fg); }
+
+.rise { animation: rise .6s var(--ease) both; animation-delay: var(--d, 0s); }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* editor card */
+.editor { border: 1px solid var(--line-2); border-radius: 18px; background: linear-gradient(180deg, rgba(17, 26, 54, .92), rgba(10, 16, 34, .92)); overflow: hidden; box-shadow: 0 30px 80px -40px rgba(59, 130, 255, .55); min-width: 0; }
+.editor__bar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); font: .78rem var(--f-mono); color: var(--fg-mute); }
+.dots { display: flex; gap: 6px; flex: none; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--line-2); }
+.editor pre { margin: 0; padding: 18px 18px 22px; overflow-x: auto; font: .8rem/1.9 var(--f-mono); color: var(--fg); }
+.c { color: var(--fg-mute); }
+.k { color: var(--violet-soft); }
+.p { color: var(--blue-soft); }
+.s { color: #C7D2FE; }
+.caret { display: inline-block; width: 8px; height: 1.05em; margin-left: 2px; vertical-align: text-bottom; background: var(--blue-soft); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (max-width: 420px) { .editor pre { font-size: .74rem; padding: 16px 14px 20px; } }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+@media (min-width: 900px) { .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; } }
+.about__text { display: flex; flex-direction: column; gap: 18px; color: var(--fg-dim); font-size: 1.05rem; max-width: 62ch; }
+.about__text p { margin: 0; }
+.ledger { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(12, 18, 38, .55); overflow: hidden; }
+.ledger li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+.ledger li:last-child { border-bottom: 0; }
+.ledger__tag { font: 500 .72rem/1.9 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--violet-soft); }
+.ledger strong { display: block; font-weight: 600; color: var(--fg); }
+.ledger .sub { display: block; color: var(--fg-dim); font-size: .92rem; }
+@media (max-width: 480px) { .ledger li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+
+/* stack */
+.stack { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.card { position: relative; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(17, 26, 54, .7), rgba(10, 16, 34, .7)); padding: 22px; overflow: hidden; transition: border-color .3s; min-width: 0; }
+.card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(110, 120, 255, .15), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.card:hover { border-color: var(--line-2); }
+.card:hover::before { opacity: 1; }
+.card > * { position: relative; }
+.card__label { display: flex; align-items: center; gap: 10px; font: 500 .74rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-dim); }
+.card__label::before { content: ""; width: 8px; height: 8px; border-radius: 3px; background: var(--grad); }
+.techs { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
+.tech { display: inline-flex; align-items: center; gap: 9px; padding: 5px 13px 5px 5px; border: 1px solid var(--line); border-radius: 12px; background: rgba(6, 9, 21, .5); font-size: .9rem; color: var(--fg); transition: transform .25s var(--ease), border-color .25s; }
+.tech__ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: rgba(128, 148, 255, .1); font: 600 .72rem/1 var(--f-mono); color: var(--blue-soft); transition: color .25s, background .25s; }
+.tech__ic svg { width: 16px; height: 16px; }
+.tech:hover { transform: translateY(-2px); border-color: var(--brand, var(--blue)); }
+.tech:hover .tech__ic { color: var(--brand, var(--blue-soft)); background: color-mix(in srgb, var(--brand, var(--blue)) 16%, transparent); }
+
+/* projects */
+.projects { display: flex; flex-direction: column; gap: 28px; }
+.project { display: grid; grid-template-columns: minmax(0, 1fr); border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(180deg, rgba(14, 21, 44, .78), rgba(8, 13, 28, .78)); overflow: hidden; transition: border-color .3s; }
+.project:hover { border-color: var(--line-2); }
+.project__visual { padding: clamp(18px, 3vw, 32px); display: flex; align-items: center; justify-content: center; min-width: 0; border-bottom: 1px solid var(--line); background: radial-gradient(500px circle at 20% 0%, rgba(59, 130, 255, .14), transparent 60%), radial-gradient(500px circle at 90% 100%, rgba(139, 92, 246, .14), transparent 60%), var(--surface); }
+.project__body { padding: clamp(22px, 3.4vw, 40px); display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+@media (min-width: 960px) {
+  .project { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+  .project__visual { border-bottom: 0; border-right: 1px solid var(--line); }
+  .project--flip .project__visual { order: 2; border-right: 0; border-left: 1px solid var(--line); }
+}
+.project h3 { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.05; letter-spacing: -.03em; }
+.project__tag { margin: 0; color: var(--fg); font-size: 1.05rem; }
+.blk h4 { font: 500 .72rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--violet-soft); margin-bottom: 8px; }
+.blk p { margin: 0; color: var(--fg-dim); font-size: .98rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.tag { padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(128, 148, 255, .07); font: 500 .78rem/1 var(--f-mono); color: var(--fg-dim); }
+.fine { margin: -4px 0 0; color: var(--fg-mute); font-size: .85rem; }
+
+/* mockup windows */
+.win { width: 100%; max-width: 520px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--bg-2); overflow: hidden; box-shadow: 0 30px 70px -35px rgba(0, 0, 0, .9); }
+.win__bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); font: .72rem var(--f-mono); color: var(--fg-mute); }
+.win__title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.win__tag { flex: none; padding: 3px 8px; border: 1px dashed var(--line-2); border-radius: 6px; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; }
+.win__body { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+.journey { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; }
+.node { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: none; font: .66rem/1.3 var(--f-mono); letter-spacing: .04em; color: var(--fg-dim); white-space: nowrap; }
+.node__ic { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; border: 1px solid var(--line-2); background: linear-gradient(160deg, rgba(59, 130, 255, .2), rgba(139, 92, 246, .14)); color: var(--blue-soft); }
+.node__ic svg { width: 24px; height: 24px; }
+.link { flex: 1; min-width: 8px; height: 2px; margin-top: 25px; background: linear-gradient(90deg, var(--blue), var(--violet)); opacity: .6; border-radius: 2px; }
+.note-line { display: flex; align-items: center; gap: 10px; font: .64rem var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-mute); }
+.note-line::before, .note-line::after { content: ""; flex: 1; border-top: 1px dashed var(--line-2); }
+.rows { display: flex; flex-direction: column; gap: 8px; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(12, 18, 38, .7); font-size: .82rem; color: var(--fg-dim); }
+.row span:first-child { min-width: 0; }
+.badge { flex: none; padding: 3px 9px; border-radius: 999px; font: 500 .66rem/1.5 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.badge--blue { color: var(--blue-soft); background: rgba(59, 130, 255, .15); }
+.badge--violet { color: var(--violet-soft); background: rgba(139, 92, 246, .18); }
+.badge--ok { color: #6EE7B7; background: rgba(52, 211, 153, .13); }
+.pipe { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.step { padding: 6px 10px; border: 1px solid var(--line-2); border-radius: 8px; background: rgba(128, 148, 255, .07); font: 500 .72rem/1 var(--f-mono); color: var(--fg-dim); }
+.step--hl { border-color: transparent; background: var(--grad-btn); color: #fff; }
+.sep { font-style: normal; color: var(--fg-mute); font-family: var(--f-mono); font-size: .8rem; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpi { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(12, 18, 38, .7); display: flex; flex-direction: column; gap: 10px; }
+.kpi span { font: .62rem var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-mute); }
+.kpi i { display: block; height: 10px; width: 45%; border-radius: 5px; background: linear-gradient(90deg, rgba(59, 130, 255, .5), rgba(139, 92, 246, .4)); }
+.mini { margin: 0 0 10px; font: .64rem var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-mute); }
+.bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end; height: 84px; padding: 0 2px; border-bottom: 1px solid var(--line); }
+.bars span { height: var(--h); border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--blue), rgba(139, 92, 246, .55)); }
+.bars__lab { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 6px; font: .62rem var(--f-mono); color: var(--fg-mute); text-align: center; }
+.stages { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+
+/* contact */
+.cta { position: relative; border: 1px solid var(--line-2); border-radius: 24px; padding: clamp(26px, 5vw, 56px); overflow: hidden; background: radial-gradient(620px circle at 0% 0%, rgba(59, 130, 255, .18), transparent 60%), radial-gradient(620px circle at 100% 100%, rgba(139, 92, 246, .18), transparent 60%), var(--surface); }
+.cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(130, 150, 255, .12), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.cta:hover::before { opacity: 1; }
+.cta > * { position: relative; }
+.cta p { max-width: 54ch; color: var(--fg-dim); font-size: 1.05rem; margin: 16px 0 0; }
+.mailrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 26px; }
+.mail { font: 500 1rem/1.4 var(--f-mono); color: var(--fg); padding: 11px 14px; border: 1px solid var(--line-2); border-radius: 12px; background: rgba(6, 9, 21, .6); overflow-wrap: anywhere; }
+.cta .actions { margin-top: 22px; }
+.cta .fine { margin: 14px 0 0; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--fg-mute); font-size: .88rem; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.foot a { text-decoration: none; color: var(--fg-dim); }
+.foot a:hover { color: var(--fg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><g fill="currentColor"><rect x="3" y="9" width="3.6" height="11.5" rx=".5"/><circle cx="4.8" cy="5.2" r="2.1"/><path d="M10 9h3.4v1.5c.6-1 1.9-1.8 3.6-1.8 3.1 0 4 2 4 4.9v6.9h-3.6v-6.2c0-1.4-.4-2.4-1.7-2.4-1.4 0-2.1 1-2.1 2.5v6.1H10z"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5.5 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v.5"/></g></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.6-3.8 3.4-6 7-6s6.4 2.2 7 6"/></g></symbol>
+  <symbol id="i-ubs" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4.5 20 11v8.5H4z"/><path d="M12 11v5M9.5 13.5h5"/></g></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></g></symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="15" rx="2.5"/><path d="M12 8.5v6M9 11.5h6"/></g></symbol>
+</svg>
+
+<div class="bg" aria-hidden="true"><i class="bg__glow bg__glow--a"></i><i class="bg__glow bg__glow--b"></i><i class="bg__grid"></i></div>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#topo" aria-label="Humberto Barreto, início">
+      <span class="brand__mark">HB</span>
+      <span class="brand__name">Humberto Barreto</span>
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#stack">Stack</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero" aria-label="Apresentação">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="pill rise" style="--d:0s"><i class="pill__dot"></i>Disponível para novas oportunidades</span>
+        <h1 class="rise" style="--d:.08s"><span>Humberto</span><span class="grad">Barreto</span></h1>
+        <p class="role rise" style="--d:.16s">Desenvolvedor Full Stack em formação</p>
+        <p class="lede rise" style="--d:.24s">Olá! Sou Humberto, estudante de Tecnologia em Sistemas para Internet e desenvolvedor em formação. Gosto de transformar ideias em soluções tecnológicas, explorando desenvolvimento de software, aplicações web e inteligência artificial.</p>
+        <p class="meta rise" style="--d:.3s"><svg aria-hidden="true"><use href="#i-pin"/></svg>Charqueadas, RS</p>
+        <div class="actions rise" style="--d:.36s">
+          <a class="btn btn--primary" href="#projetos">Conheça meus projetos<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" id="cv" href="#contato"><svg aria-hidden="true"><use href="#i-down"/></svg>Baixar currículo</a>
+        </div>
+        <p class="cv-note" id="cv-note" hidden>
+          <span>Currículo sob solicitação. Escreva para <span class="mono" id="cv-mail">humbertow0101@gmail.com</span></span>
+          <button class="mini-btn js-copy" type="button" data-target="cv-mail"><svg aria-hidden="true"><use href="#i-copy"/></svg><span class="js-label">Copiar</span></button>
+        </p>
+        <div class="social rise" style="--d:.42s">
+          <a class="chip-link" href="https://github.com/humbertobrrt" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+          <a class="chip-link" href="https://linkedin.com/in/humberto-barreto-silva" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="editor rise" style="--d:.2s" aria-label="Resumo do perfil em formato de código">
+        <div class="editor__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>perfil.js</span></div>
+<pre><span class="c">// perfil</span>
+<span class="k">const</span> humberto = {
+  <span class="p">curso</span>: <span class="s">"Sistemas para Internet"</span>,
+  <span class="p">instituicao</span>: <span class="s">"IFSul"</span>,
+  <span class="p">foco</span>: [<span class="s">"web"</span>, <span class="s">"backend"</span>, <span class="s">"IA"</span>],
+  <span class="p">stack</span>: [<span class="s">"Java"</span>, <span class="s">"Spring Boot"</span>],
+  <span class="p">local</span>: <span class="s">"Charqueadas, RS"</span>,
+  <span class="p">status</span>: <span class="s">"aberto a vagas"</span>,
+};<span class="caret" aria-hidden="true"></span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="sobre" aria-labelledby="t-sobre">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="eyebrow">Sobre mim</span>
+        <h2 id="t-sobre">Aprendo construindo.</h2>
+      </div>
+      <div class="about">
+        <div class="about__text">
+          <p>Sou estudante de Tecnologia em Sistemas para Internet no IFSul, Câmpus Charqueadas, e estou aberto a novas oportunidades profissionais. Meu foco está em desenvolvimento web e backend, com interesse crescente em inteligência artificial.</p>
+          <p>Aprendo praticando. Participei de hackathons e maratonas de programação, fiz parte do programa Geração Caldeira e desenvolvi projetos a partir de problemas reais, como o EloSaúde e o MéquiJunto, que nasceu de um desafio proposto pela empresa Kallopolli.</p>
+          <p>Gosto de aprender de forma contínua e de criar soluções que funcionam de ponta a ponta, do banco de dados à interface.</p>
+        </div>
+        <ul class="ledger">
+          <li><span class="ledger__tag">Formação</span><div><strong>Tecnologia em Sistemas para Internet</strong><span class="sub">IFSul, Câmpus Charqueadas</span></div></li>
+          <li><span class="ledger__tag">Programa</span><div><strong>Geração Caldeira</strong><span class="sub">Desafio GC, com o projeto MéquiJunto para a Kallopolli</span></div></li>
+          <li><span class="ledger__tag">Hackathon</span><div><strong>Saúde Conectada 2026</strong><span class="sub">EloSaúde, plataforma de continuidade do cuidado em saúde</span></div></li>
+          <li><span class="ledger__tag">Maratonas</span><div><strong>Programação competitiva e em equipe</strong><span class="sub">Participação em maratonas de programação e outros hackathons</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="stack" aria-labelledby="t-stack">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="eyebrow">Tecnologias</span>
+        <h2 id="t-stack">O que uso para construir.</h2>
+      </div>
+      <div class="stack">
+        <div class="card spot">
+          <div class="card__label">Backend</div>
+          <ul class="techs">
+            <li class="tech" style="--brand:#F89820"><span class="tech__ic" aria-hidden="true">Jv</span>Java</li>
+            <li class="tech" style="--brand:#6DB33F"><span class="tech__ic" aria-hidden="true">Sb</span>Spring Boot</li>
+            <li class="tech" style="--brand:#8993BE"><span class="tech__ic" aria-hidden="true">php</span>PHP</li>
+            <li class="tech" style="--brand:#5A9FD4"><span class="tech__ic" aria-hidden="true">Py</span>Python</li>
+          </ul>
+        </div>
+        <div class="card spot">
+          <div class="card__label">Frontend</div>
+          <ul class="techs">
+            <li class="tech" style="--brand:#E44D26"><span class="tech__ic" aria-hidden="true">&lt;/&gt;</span>HTML</li>
+            <li class="tech" style="--brand:#3C99DC"><span class="tech__ic" aria-hidden="true">{ }</span>CSS</li>
+            <li class="tech" style="--brand:#F7DF1E"><span class="tech__ic" aria-hidden="true">JS</span>JavaScript</li>
+          </ul>
+        </div>
+        <div class="card spot">
+          <div class="card__label">Banco de dados</div>
+          <ul class="techs">
+            <li class="tech" style="--brand:#4F8FBF"><span class="tech__ic" aria-hidden="true">My</span>MySQL</li>
+            <li class="tech" style="--brand:#6B9FD8"><span class="tech__ic" aria-hidden="true">Pg</span>PostgreSQL</li>
+            <li class="tech" style="--brand:#0F80CC"><span class="tech__ic" aria-hidden="true">Sq</span>SQLite</li>
+            <li class="tech" style="--brand:#3ECF8E"><span class="tech__ic" aria-hidden="true">Su</span>Supabase</li>
+          </ul>
+        </div>
+        <div class="card spot">
+          <div class="card__label">Ferramentas</div>
+          <ul class="techs">
+            <li class="tech" style="--brand:#F05032"><span class="tech__ic" aria-hidden="true">Gt</span>Git</li>
+            <li class="tech" style="--brand:#FFFFFF"><span class="tech__ic" aria-hidden="true"><svg><use href="#i-github"/></svg></span>GitHub</li>
+            <li class="tech" style="--brand:#FE315D"><span class="tech__ic" aria-hidden="true">IJ</span>IntelliJ IDEA</li>
+            <li class="tech" style="--brand:#3FA9F5"><span class="tech__ic" aria-hidden="true">VS</span>VS Code</li>
+            <li class="tech" style="--brand:#A259FF"><span class="tech__ic" aria-hidden="true">Fg</span>Figma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projetos" aria-labelledby="t-proj">
+    <div class="wrap">
+      <div class="sec__head">
+        <span class="eyebrow">Projetos em destaque</span>
+        <h2 id="t-proj">Soluções para problemas reais.</h2>
+      </div>
+      <div class="projects">
+
+        <article class="project">
+          <div class="project__visual">
+            <div class="win" role="img" aria-label="Ilustração da jornada do paciente entre paciente, UBS, especialista e hospital">
+              <div class="win__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="win__title">elosaude · jornada do paciente</span><span class="win__tag">ilustração</span></div>
+              <div class="win__body">
+                <div class="journey">
+                  <div class="node"><span class="node__ic"><svg><use href="#i-person"/></svg></span>Paciente</div>
+                  <i class="link"></i>
+                  <div class="node"><span class="node__ic"><svg><use href="#i-ubs"/></svg></span>UBS</div>
+                  <i class="link"></i>
+                  <div class="node"><span class="node__ic"><svg><use href="#i-pulse"/></svg></span>Especialista</div>
+                  <i class="link"></i>
+                  <div class="node"><span class="node__ic"><svg><use href="#i-hospital"/></svg></span>Hospital</div>
+                </div>
+                <div class="note-line"><span>a informação acompanha o paciente</span></div>
+                <div class="rows">
+                  <div class="row"><span>Solicitação de ficha</span><span class="badge badge--blue">Em análise</span></div>
+                  <div class="row"><span>Consulta registrada no prontuário</span><span class="badge badge--ok">Registrada</span></div>
+                  <div class="row"><span>Encaminhamento para especialista</span><span class="badge badge--violet">Enviado</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project__body">
+            <span class="eyebrow">Hackathon Saúde Conectada 2026</span>
+            <h3>EloSaúde</h3>
+            <p class="project__tag">A informação conecta. O cuidado continua.</p>
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>No atendimento público, o histórico do paciente nem sempre acompanha a jornada entre UBS, especialistas e hospitais. As informações não voltam à unidade de origem, o acompanhamento fica fragmentado e o tratamento perde continuidade.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <p>Uma plataforma que centraliza o histórico de atendimentos e compartilha, de forma controlada, o que cada unidade precisa saber. Permite solicitar fichas e acompanhar o status, registrar consultas e condutas no prontuário, criar encaminhamentos e deixar a unidade de destino consultar as informações autorizadas. MVP desenvolvido em um hackathon de cerca de 10 horas.</p>
+            </div>
+            <ul class="tags" aria-label="Tecnologias do projeto">
+              <li class="tag">Java</li><li class="tag">Spring Boot</li><li class="tag">PostgreSQL / Supabase</li><li class="tag">APIs REST</li>
+            </ul>
+            <div class="actions">
+              <a class="btn btn--primary" href="https://github.com/humbertobrrt/EloSaude" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>Ver no GitHub<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project project--flip">
+          <div class="project__visual">
+            <div class="win" role="img" aria-label="Ilustração do fluxo do WhatsApp até o painel de RH, com gráfico de alertas por dia da semana">
+              <div class="win__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="win__title">mequijunto · painel RH e Gerência</span><span class="win__tag">ilustração</span></div>
+              <div class="win__body">
+                <div class="pipe">
+                  <span class="step">WhatsApp</span><i class="sep">›</i><span class="step">n8n</span><i class="sep">›</i><span class="step">IA</span><i class="sep">›</i><span class="step">API</span><i class="sep">›</i><span class="step step--hl">Painel</span>
+                </div>
+                <div class="kpis">
+                  <div class="kpi"><span>Ativos</span><i></i></div>
+                  <div class="kpi"><span>Pendentes</span><i></i></div>
+                  <div class="kpi"><span>Alertas</span><i></i></div>
+                </div>
+                <div>
+                  <p class="mini">Alertas por dia da semana</p>
+                  <div class="bars" aria-hidden="true">
+                    <span style="--h:42%"></span><span style="--h:66%"></span><span style="--h:50%"></span><span style="--h:86%"></span><span style="--h:58%"></span><span style="--h:32%"></span><span style="--h:24%"></span>
+                  </div>
+                  <div class="bars__lab" aria-hidden="true"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
+                </div>
+                <div class="stages">
+                  <span class="badge badge--violet">Pendente</span><i class="sep">›</i><span class="badge badge--blue">Conversar</span><i class="sep">›</i><span class="badge badge--ok">Resolvido</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project__body">
+            <span class="eyebrow">Desafio GC · Geração Caldeira</span>
+            <h3>MéquiJunto</h3>
+            <p class="project__tag">Plataforma de escuta, acolhimento e acompanhamento de colaboradores.</p>
+            <div class="blk">
+              <h4>O problema</h4>
+              <p>A Kallopolli propôs facilitar o acolhimento dos colaboradores e apoiar o acompanhamento de situações que pedem atenção, antes que o problema cresça.</p>
+            </div>
+            <div class="blk">
+              <h4>A solução</h4>
+              <p>O colaborador conversa pelo WhatsApp. Um fluxo no n8n envia a conversa para uma IA, que identifica sinais de cuidado, como sobrecarga, e avisa a API. No painel web, RH e Gerência acompanham os alertas por etapa e registram o retorno dado a cada pessoa. O backend não guarda mensagens, só os alertas identificados. Projeto em equipe de 5 pessoas.</p>
+            </div>
+            <ul class="tags" aria-label="Tecnologias do projeto">
+              <li class="tag">Java 21</li><li class="tag">Spring Boot</li><li class="tag">PostgreSQL</li><li class="tag">JWT</li><li class="tag">n8n</li><li class="tag">WhatsApp</li><li class="tag">IA</li><li class="tag">Swagger / OpenAPI</li><li class="tag">HTML · CSS · JS</li>
+            </ul>
+            <div class="actions">
+              <a class="btn btn--primary" href="https://mequi-junto-front.vercel.app" target="_blank" rel="noopener">Acessar projeto<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost" href="https://github.com/humbertobrrt/MequiJunto" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>Ver no GitHub</a>
+            </div>
+            <p class="fine">O painel tem login restrito aos perfis RH e Gerência.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contato" aria-labelledby="t-contato">
+    <div class="wrap">
+      <div class="cta spot">
+        <span class="eyebrow">Contato</span>
+        <h2 id="t-contato" style="margin-top:14px">Vamos conversar?</h2>
+        <p>Estou aberto a novas oportunidades. Se meu perfil combina com a vaga, me chame no LinkedIn ou escreva por e-mail.</p>
+        <div class="mailrow">
+          <span class="mail" id="mail-text">humbertow0101@gmail.com</span>
+          <button class="btn btn--ghost js-copy" type="button" data-target="mail-text"><svg aria-hidden="true"><use href="#i-copy"/></svg><span class="js-label" aria-live="polite">Copiar e-mail</span></button>
+          <a class="chip-link" href="mailto:humbertow0101@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Abrir e-mail</a>
+        </div>
+        <div class="actions">
+          <a class="btn btn--primary" href="https://linkedin.com/in/humberto-barreto-silva" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="https://github.com/humbertobrrt" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Humberto Barreto · Charqueadas, RS</span>
+    <a href="#topo">Voltar ao topo</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Cole aqui o link público do currículo (por exemplo, um PDF no Google Drive com acesso por link).
+  // Enquanto estiver vazio, o botão "Baixar currículo" mostra o e-mail para solicitar o arquivo.
+  var CURRICULO_URL = "";
+
+  var cv = document.getElementById("cv");
+  var note = document.getElementById("cv-note");
+  if (cv) {
+    if (CURRICULO_URL) {
+      cv.href = CURRICULO_URL;
+      cv.target = "_blank";
+      cv.rel = "noopener";
+    } else {
+      cv.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (note) note.hidden = false;
+      });
+    }
+  }
+
+  // Destaque do item atual na navegação
+  var links = [].slice.call(document.querySelectorAll(".nav__links a"));
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute("aria-current"); });
+        var a = byId[en.target.id];
+        if (a) a.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(byId).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+
+  // Brilho que acompanha o cursor nos cards
+  [].forEach.call(document.querySelectorAll(".spot"), function (el) {
+    el.addEventListener("pointermove", function (ev) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", (ev.clientX - r.left) + "px");
+      el.style.setProperty("--my", (ev.clientY - r.top) + "px");
+    });
+  });
+
+  // Copiar e-mail
+  [].forEach.call(document.querySelectorAll(".js-copy"), function (btn) {
+    var label = btn.querySelector(".js-label");
+    var original = label ? label.textContent : "";
+    var timer;
+    function say(text) {
+      if (!label) return;
+      label.textContent = text;
+      clearTimeout(timer);
+      timer = setTimeout(function () { label.textContent = original; }, 2200);
+    }
+    btn.addEventListener("click", function () {
+      var target = document.getElementById(btn.getAttribute("data-target"));
+      if (!target) return;
+      function fallback() {
+        try {
+          var range = document.createRange();
+          range.selectNodeContents(target);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } catch (err) {}
+        say("Selecionado, copie");
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(target.textContent.trim()).then(function () { say("Copiado"); }, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
